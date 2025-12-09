@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MMP Classroom</title>
+
+    <!-- Link to A-Frame -->
+    <script src="//aframe.io/releases/1.1.0/aframe.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
+
+    <!--environment component-->
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script src="//unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <!-- Preloading -->
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="floor" src="Interactables/Floor.gltf"></a-asset-item>
+
+        <a-asset-item id="room" src="StaticRoom/StaticRoom.gltf"></a-asset-item>
+
+        <a-asset-item
+          id="aeMonitor"
+          src="Interactables/AfterEffectsMonitor.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="psMonitor"
+          src="Interactables/PhotoshopMonitor.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="ppMonitor"
+          src="Interactables/PremiereProMonitor.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="illustratorMonitor"
+          src="Interactables/IllustratorMonitor.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="mmpBoard"
+          src="Interactables/MMPBoard.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="tanya"
+          src="Interactables/TanyaPoster.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="miranda"
+          src="Interactables/MirandaPoster.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="isaiah"
+          src="Interactables/IsaiahPoster.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="kris"
+          src="Interactables/KrisPoster.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="george"
+          src="Interactables/GeorgePoster.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="dean"
+          src="Interactables/MovingInteractables/Dean.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="sam"
+          src="Interactables/MovingInteractables/Sam.gltf"
+        ></a-asset-item>
+      </a-assets>
+
+      <!-- Audio -->
+      <audio id="clickSound" src="Sounds/ClickSound1.mp3"></audio>
+      <audio id="spatialSound" src="Sounds/SpatialSound.mp3"></audio>
+
+      <!-- Images -->
+      <img id="aePoster" src="PopupScreens/AECrash.png" />
+      <img id="aiPoster" src="PopupScreens/AICrash.png" />
+      <img id="psPoster" src="PopupScreens/PSCrash.png" />
+      <img id="ppPoster" src="PopupScreens/PPCrash.png" />
+      <img id="papyrusPoster" src="PopupScreens/Papyrus.png" />
+      <img id="tanyaPoster" src="PopupScreens/Tanya.png" />
+      <img id="mirandaPoster" src="PopupScreens/Miranda.png" />
+      <img id="isaiahPoster" src="PopupScreens/Isaiah.png" />
+      <img id="krisPoster" src="PopupScreens/Kris.png" />
+      <img id="georgePoster" src="PopupScreens/George.png" />
+
+      <!-- Build Your Scene -->
+
+      <!-- Pop-Ups -->
+
+      <a-box
+        id="aeposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#aePoster"
+        scale="0.77542 0.33724 0.08"
+        position="-2.29643 -1.29122 -2.34876"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:-2.29643 -1.29122 -2.34876;"
+      ></a-box>
+
+      <a-box
+        id="aiposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#aiPoster"
+        scale="0.85308 0.35076 0.08"
+        position="2.67106 -1.29122 1.70262"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:2.67106 -1.29122 1.70262;"
+      ></a-box>
+
+      <a-box
+        id="psposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#psPoster"
+        scale="0.86446 0.35065 0.08"
+        position="0.37861 -1.29122 -2.359"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:0.37861 -1.29122 -2.359;"
+      ></a-box>
+
+      <a-box
+        id="ppposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#ppPoster"
+        scale="0.85901 0.35436 0.08"
+        position="-2.18891 -1.29122 1.70928"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:-2.18891 -1.29122 1.70928;"
+      ></a-box>
+
+      <a-box
+        id="papyrusposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#papyrusPoster"
+        scale="4.37976 1.29133 0.08"
+        position="0.02771 -2.02088 -5.21640"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:0.02771 -2.02088 -5.21640;"
+      ></a-box>
+
+      <a-box
+        id="tanyaposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#tanyaPoster"
+        scale="1.04344 0.94313 0.08"
+        position="-4.156 -1.98083 -5.22963"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:-4.156 -1.98083 -5.22963;"
+      ></a-box>
+
+      <a-box
+        id="mirandaposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#mirandaPoster"
+        scale="1.04344 0.94313 0.08"
+        rotation="0 -51.348 0"
+        position="4.82791 -1.96628 -4.81989"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:4.82791 -1.96628 -4.81989;"
+      ></a-box>
+
+      <a-box
+        id="isaiahposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#isaiahPoster"
+        scale="1.04344 0.94313 0.08"
+        rotation="0 90 0"
+        position="-5.18203 -1.85623 1.24332"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:-5.18203 -1.85623 1.24332;"
+      ></a-box>
+
+      <a-box
+        id="krisposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#krisPoster"
+        scale="1.04344 0.94313 0.08"
+        rotation="0 -90 0"
+        position="5.1624 -2.02331 0.38922"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:5.1624 -2.02331 0.38922;"
+      ></a-box>
+
+      <a-box
+        id="georgeposterFrame"
+        height="1.5"
+        width="1"
+        depth="0.01"
+        material="shader: flat; src:#georgePoster"
+        scale="1.04344 0.94313 0.08"
+        position="-1.11084 -2.00891 5.28847"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="position:-1.11084 -2.00891 5.28847;"
+      ></a-box>
+
+      <!-- Objects -->
+
+      <a-entity
+        gltf-model="#floor"
+        nav-mesh
+        visible="true"
+        shadow="receive:true"
+        scale="0.99512 0.00001 1.0002"
+      ></a-entity>
+
+      <a-entity gltf-model="#room" shadow="receive:true"></a-entity>
+
+      <!-- Interactables -->
+
+      <a-entity
+        gltf-model="#aeMonitor"
+        shadow="cast: true"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #aeposterFrame; position:-2.29643 1.29122 -2.34876;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#psMonitor"
+        shadow="cast: true"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #psposterFrame; position:0.37861 1.29122 -2.359;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#ppMonitor"
+        shadow="cast: true"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #ppposterFrame; position:-2.18891 1.29122 1.70928;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#illustratorMonitor"
+        shadow="cast: true"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #aiposterFrame; position:2.67106 1.29122 1.70262;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#mmpBoard"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #papyrusposterFrame; position:0.02771 2.02088 -5.21640;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#tanya"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #tanyaposterFrame; position:-4.156 1.98083 -5.22963;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#miranda"
+        sound="src:#spatialSound; autoplay:false; on:click;"
+        trigger-miranda-click
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #mirandaposterFrame; position:4.82791 1.96628 -4.81989;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#isaiah"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #isaiahposterFrame; position:-5.18203 1.85623 1.24332;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#kris"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #krisposterFrame; position:5.1624 2.02331 0.38922;"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#george"
+        animation__1="property: position; to:0 0 .1; dir:alternate; loop: 2; dur: 3000; startEvents:click;"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+        event-set__click="_target: #georgeposterFrame; position:-1.11084 2.00891 5.28847;"
+      ></a-entity>
+
+      <!-- Animated Interactables -->
+
+      <a-entity
+        id="movingSam"
+        gltf-model="#sam"
+        shadow="cast: true"
+        position="0.25295 -0.27306 0.06969"
+        animation__reveal="property:position; to: 0.25295 -0.27306 2; dur: 2000; startEvents:runmovingSam;"
+        animation__hide="property:position; to: 0.25295 -0.27306 0.06969; dur: 2000; startEvents:click;"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+      ></a-entity>
+
+      <a-entity
+        id="movingDean"
+        gltf-model="#dean"
+        shadow="cast: true"
+        position="0.25295 -0.27306 0.06969"
+        animation__reveal="property:position; to: 0.25295 -0.27306 2; dur: 2000; delay:1000; startEvents:runmovingDean;"
+        animation__hide="property:position; to: 0.25295 -0.27306 0.06969; dur: 2000; delay:1000; startEvents:click;"
+        event-set__mouseenter="_target:#ring; color:#9404E8;"
+        event-set__mouseleave="_target:#ring; color:#1E97B8;"
+      ></a-entity>
+
+      <!-- Lights and Camera -->
+      <a-entity
+        light="type: ambient; color: #fffffa; intensity: 0.8; angle: 60.21; decay: 0.21"
+        position="0 2.75284 0.83429"
+      ></a-entity>
+
+      <a-entity
+        id="frontLight"
+        light="type: spot; color: #C4C59F"
+        rotation="-27.887 0 0"
+        position="0.07879 3.52504 1.9128"
+        geometry="primitive: sphere; radius: 0.1"
+        material="shader: flat"
+      ></a-entity>
+
+      <a-entity
+        id="backLight"
+        light="type: spot; color: #C4C59F"
+        position="0.07879 3.52504 -2.76176"
+        rotation="-151.534 -0.370 -180.000"
+        geometry="primitive: sphere; radius: 0.1"
+        material="shader: flat"
+      ></a-entity>
+
+      <!--Camera Rig-->
+      <a-entity id="rig" movement-controls="constrainToNavMesh:true">
+        <!-- adding a camera -->
+        <a-entity camera position="0 1.5 0" look-controls>
+          <a-cursor
+            id="ring"
+            color="#1E97B8"
+            sound="on:click; src:#clickSound"
+          ></a-cursor>
+        </a-entity>
+      </a-entity>
+    </a-scene>
+
+    <script src="customFunctions.js"></script>
+  </body>
+</html>
